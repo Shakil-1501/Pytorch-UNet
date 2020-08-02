@@ -52,9 +52,9 @@ def predict_img(net,
 def get_args():
     parser = argparse.ArgumentParser(description='Predict masks from input images',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--model', '-m', default='MODEL.pth',
-                        metavar='FILE',
-                        help="Specify the file in which the model is stored")
+    #parser.add_argument('--model', '-m', default='MODEL.pth',
+                        #metavar='FILE',
+                        #help="Specify the file in which the model is stored")
     parser.add_argument('--input', '-i', metavar='INPUT', nargs='+',
                         help='filenames of input images', required=True)
 
@@ -104,12 +104,12 @@ if __name__ == "__main__":
 
     net = UNet(n_channels=3, n_classes=1)
 
-    logging.info("Loading model {}".format(args.model))
+    #logging.info("Loading model {}".format(args.model))
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logging.info(f'Using device {device}')
     net.to(device=device)
-    net.load_state_dict(torch.load(args.model, map_location=device))
+    #net.load_state_dict(torch.load(args.model, map_location=device))
 
     logging.info("Model loaded !")
 
